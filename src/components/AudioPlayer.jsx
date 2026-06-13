@@ -77,7 +77,7 @@ function AudioPlayer({ src, onReady }) {
       <button
         type="button"
         onClick={toggleAudio}
-        className="group fixed bottom-5 right-5 z-30 flex h-11 items-center gap-2 rounded-full border border-white/15 bg-black/30 px-3 text-white shadow-[0_8px_30px_rgba(0,0,0,.35)] backdrop-blur-md transition hover:border-fuchsia-300/40 hover:bg-purple-950/55 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300 md:bottom-7 md:right-8"
+        className="audio-control group fixed bottom-5 right-5 z-30 flex h-11 items-center gap-2 rounded-full border border-white/15 bg-black/30 px-3 text-white shadow-[0_8px_30px_rgba(0,0,0,.35)] backdrop-blur-md transition hover:border-fuchsia-300/40 hover:bg-purple-950/55 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300 md:bottom-7 md:right-8"
         aria-label={playing ? 'Pausar música ambiental' : 'Activar música ambiental'}
         aria-pressed={playing}
       >

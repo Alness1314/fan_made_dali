@@ -53,11 +53,11 @@ function App() {
   const loaded = imageReady && audioReady && minimumDelayPassed
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#09020f] text-white">
+    <main className="experience-shell relative min-h-screen overflow-hidden bg-[#09020f] text-white">
       {!loaded && <LoaderSkeleton />}
 
       <section
-        className={`relative min-h-screen overflow-hidden transition-opacity duration-1000 ${
+        className={`experience-stage relative min-h-screen overflow-hidden transition-opacity duration-1000 ${
           loaded ? 'opacity-100' : 'opacity-0'
         }`}
       >
@@ -78,8 +78,8 @@ function App() {
         <div className="vignette absolute inset-0 z-[2]" />
         <SmokeOverlay />
 
-        <div className="relative z-10 mx-auto min-h-screen w-full max-w-[1600px] px-5 py-5 sm:px-8 md:px-12 md:py-7">
-          <div className="absolute left-1/2 top-[5.5vh] -translate-x-1/2 sm:top-[4.5vh]">
+        <div className="experience-content relative z-10 mx-auto min-h-screen w-full max-w-[1600px] px-5 py-5 sm:px-8 md:px-12 md:py-7">
+          <div className="title-position absolute left-1/2 top-[5.5vh] -translate-x-1/2 sm:top-[4.5vh]">
             <TourLogo />
           </div>
 
