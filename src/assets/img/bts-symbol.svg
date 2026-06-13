@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" role="img" aria-labelledby="title">
+  <title id="title">Simbolo BTS</title>
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".45" stop-color="#d8c8ff"/>
+      <stop offset="1" stop-color="#8e66d7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-60%" width="160%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="7"/>
+      <feOffset dy="5"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".75"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g fill="url(#metal)" filter="url(#shadow)">
+    <path d="M51 12 137 38v70L51 84z"/>
+    <path d="m249 12-86 26v70l86-24z"/>
+  </g>
+</svg>

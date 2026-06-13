@@ -1,0 +1,482 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #fff;
+  background: #09020f;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --poster-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  overflow: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vignette {
+  box-shadow:
+    inset 0 0 120px 32px rgba(3, 0, 8, 0.58),
+    inset 0 -100px 130px rgba(3, 0, 8, 0.42);
+}
+
+.tour-logo {
+  width: clamp(280px, 39vw, 560px);
+  transform-origin: top center;
+}
+
+.title-edge-glow {
+  filter:
+    drop-shadow(0 10px 9px rgba(0, 0, 0, 0.62))
+    drop-shadow(0 0 2px rgba(255, 236, 244, 0.5))
+    drop-shadow(0 0 7px rgba(255, 47, 91, 0.28))
+    drop-shadow(0 0 15px rgba(153, 77, 219, 0.16));
+}
+
+.logo-edge-glow {
+  filter:
+    drop-shadow(0 12px 20px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 0 8px rgba(213, 172, 255, 0.32))
+    drop-shadow(0 0 14px rgba(151, 83, 218, 0.18));
+}
+
+.quote-text {
+  width: min(44vw, 640px);
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.012em;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(73, 24, 112, 0.7);
+}
+
+.typing-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  vertical-align: -0.12em;
+  background: rgba(255, 255, 255, 0.82);
+  animation: caretBlink 0.75s steps(1) infinite;
+}
+
+.smoke {
+  position: absolute;
+  width: 76vw;
+  height: 44vh;
+  border-radius: 50%;
+  opacity: 0.36;
+  filter: blur(34px);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.smoke-one {
+  bottom: -10vh;
+  left: -18vw;
+  background: radial-gradient(ellipse, rgba(175, 105, 222, 0.72), transparent 66%);
+  animation: smokeMove 18s ease-in-out infinite alternate;
+}
+
+.smoke-two {
+  right: -25vw;
+  bottom: 7vh;
+  background: radial-gradient(ellipse, rgba(123, 75, 194, 0.68), transparent 68%);
+  animation: smokeMoveReverse 22s ease-in-out infinite alternate;
+}
+
+.smoke-three {
+  top: 22vh;
+  left: 18vw;
+  width: 62vw;
+  height: 30vh;
+  opacity: 0.24;
+  background: radial-gradient(ellipse, rgba(211, 174, 235, 0.58), transparent 70%);
+  animation: smokeDrift 25s ease-in-out -8s infinite alternate;
+}
+
+.smoke-ribbon {
+  position: absolute;
+  width: 76vw;
+  height: 20vh;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(15px);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.smoke-ribbon-one {
+  left: 0;
+  bottom: 8vh;
+  background:
+    radial-gradient(ellipse at 18% 54%, rgba(231, 210, 242, 0.34), transparent 18%),
+    radial-gradient(ellipse at 48% 46%, rgba(188, 143, 215, 0.46), transparent 23%),
+    radial-gradient(ellipse at 76% 55%, rgba(222, 191, 238, 0.32), transparent 20%),
+    linear-gradient(8deg, transparent 10%, rgba(173, 112, 207, 0.16) 28%, rgba(205, 165, 226, 0.5) 50%, rgba(187, 131, 218, 0.18) 68%, transparent 86%);
+  animation: smokeRibbon 15s ease-in-out infinite;
+}
+
+.smoke-ribbon-two {
+  top: 34vh;
+  right: 0;
+  height: 15vh;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 28% 50%, rgba(194, 155, 218, 0.38), transparent 22%),
+    radial-gradient(ellipse at 64% 45%, rgba(226, 204, 238, 0.3), transparent 20%),
+    linear-gradient(-7deg, transparent 8%, rgba(141, 84, 190, 0.2) 26%, rgba(205, 169, 225, 0.48) 52%, transparent 82%);
+  animation: smokeRibbonReverse 18s ease-in-out -7s infinite;
+}
+
+.concert-beam {
+  position: absolute;
+  top: -28vh;
+  width: 8vw;
+  height: 120vh;
+  opacity: 0.07;
+  background: linear-gradient(to bottom, transparent, rgba(214, 183, 255, 0.8), transparent);
+  filter: blur(20px);
+  transform-origin: top center;
+  animation: beamSweep 13s ease-in-out infinite alternate;
+}
+
+.concert-beam-left {
+  left: 18%;
+  transform: rotate(18deg);
+}
+
+.concert-beam-right {
+  right: 13%;
+  transform: rotate(-20deg);
+  animation-delay: -6s;
+}
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.24;
+  background-image:
+    radial-gradient(circle at 8% 18%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 34% 12%, #f1c8ff 0 1px, transparent 2px),
+    radial-gradient(circle at 67% 19%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 87% 28%, #dba2ff 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 55% 8%, #fff 0 1px, transparent 2px);
+  background-size: 190px 160px, 240px 210px, 230px 170px, 280px 240px, 330px 260px;
+  animation: starsPulse 5s ease-in-out infinite alternate;
+}
+
+.sparkle-field {
+  position: absolute;
+  inset: 0;
+}
+
+.sparkle-field i {
+  position: absolute;
+  top: var(--sparkle-top);
+  left: var(--sparkle-left);
+  width: var(--sparkle-size);
+  height: var(--sparkle-size);
+  border-radius: 50%;
+  opacity: 0;
+  background: #fff;
+  box-shadow:
+    0 0 4px 1px rgba(255, 255, 255, 0.9),
+    0 0 11px 4px rgba(214, 138, 255, 0.75),
+    0 0 24px 7px rgba(143, 65, 220, 0.38);
+  animation: sparkleFlash var(--sparkle-duration) ease-in-out var(--sparkle-delay) infinite;
+}
+
+.sparkle-field i:nth-child(3n) {
+  background: #f3b7ff;
+}
+
+.sparkle-field i:nth-child(4n) {
+  animation-name: sparkleGlint;
+}
+
+.audio-bars {
+  display: flex;
+  height: 16px;
+  align-items: center;
+  gap: 2px;
+}
+
+.audio-bars i {
+  display: block;
+  width: 2px;
+  height: 100%;
+  border-radius: 2px;
+  background: currentColor;
+  animation: audioBar 0.7s ease-in-out infinite alternate;
+}
+
+.audio-bars i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.audio-bars i:nth-child(3) {
+  animation-delay: -0.5s;
+}
+
+@keyframes titleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-42px) scale(0.88);
+    filter: blur(8px) drop-shadow(0 10px 9px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 5px rgba(223, 189, 255, 0.25)) drop-shadow(0 0 14px rgba(135, 72, 209, 0.16));
+  }
+  72% {
+    opacity: 1;
+    transform: translateY(2px) scale(1.015);
+    filter: blur(0) drop-shadow(0 10px 9px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 5px rgba(223, 189, 255, 0.25)) drop-shadow(0 0 14px rgba(135, 72, 209, 0.16));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) drop-shadow(0 10px 9px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 5px rgba(223, 189, 255, 0.25)) drop-shadow(0 0 14px rgba(135, 72, 209, 0.16));
+  }
+}
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.72);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes instagramEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.78);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-0.7deg); }
+  50% { transform: translateY(-8px) rotate(0.7deg); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes quoteFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes smokeMove {
+  from { transform: translate3d(-4vw, 4vh, 0) scale(0.9); }
+  to { transform: translate3d(35vw, -8vh, 0) scale(1.2); }
+}
+
+@keyframes smokeMoveReverse {
+  from { transform: translate3d(10vw, 3vh, 0) scale(1.1); }
+  to { transform: translate3d(-32vw, -4vh, 0) scale(0.88); }
+}
+
+@keyframes smokeDrift {
+  from { transform: translate3d(-18vw, -4vh, 0) scale(0.86) rotate(-4deg); }
+  to { transform: translate3d(22vw, 7vh, 0) scale(1.18) rotate(5deg); }
+}
+
+@keyframes smokeRibbon {
+  0%, 10% {
+    transform: translate3d(-92vw, 4vh, 0) rotate(-3deg) scaleY(0.75);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.22;
+  }
+  48% {
+    transform: translate3d(15vw, -2vh, 0) rotate(1deg) scaleY(1);
+    opacity: 0.3;
+  }
+  72% {
+    opacity: 0.2;
+  }
+  90%, 100% {
+    transform: translate3d(112vw, -7vh, 0) rotate(4deg) scaleY(1.16);
+    opacity: 0;
+  }
+}
+
+@keyframes smokeRibbonReverse {
+  0%, 12% {
+    transform: translate3d(94vw, -3vh, 0) rotate(3deg) scaleY(0.8);
+    opacity: 0;
+  }
+  28% {
+    opacity: 0.16;
+  }
+  52% {
+    transform: translate3d(-12vw, 1vh, 0) rotate(-1deg) scaleY(1);
+    opacity: 0.24;
+  }
+  76% {
+    opacity: 0.15;
+  }
+  90%, 100% {
+    transform: translate3d(-110vw, 6vh, 0) rotate(-4deg) scaleY(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes beamSweep {
+  0% { opacity: 0.025; transform: rotate(12deg) translateX(-5vw); }
+  55% { opacity: 0.09; }
+  100% { opacity: 0.035; transform: rotate(28deg) translateX(7vw); }
+}
+
+@keyframes starsPulse {
+  from { opacity: 0.1; filter: brightness(0.85); }
+  to { opacity: 0.32; filter: brightness(1.35); }
+}
+
+@keyframes sparkleFlash {
+  0%, 70%, 100% {
+    opacity: 0;
+    transform: scale(0.25);
+  }
+  76% {
+    opacity: 0.95;
+    transform: scale(1.65);
+  }
+  82% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes sparkleGlint {
+  0%, 52%, 100% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  58%, 62% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+  68% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+@keyframes audioBar {
+  from { height: 35%; }
+  to { height: 100%; }
+}
+
+.animate-title-entrance {
+  animation:
+    titleEntrance 0.78s cubic-bezier(.2, .75, .25, 1) 0.12s forwards,
+    floatSlow 3.2s ease-in-out 1s infinite;
+}
+
+.animate-logo-entrance {
+  animation: logoEntrance 0.7s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+
+.animate-instagram-entrance {
+  animation: instagramEntrance 0.62s ease-out 0.55s forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 3.4s ease-in-out infinite;
+}
+
+.animate-quote-float {
+  animation: quoteFloat 6s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .tour-logo {
+    width: min(72vw, 310px);
+  }
+
+  .quote-text {
+    width: min(87vw, 440px);
+    padding-right: 0;
+    font-size: clamp(0.92rem, 4vw, 1.08rem);
+    line-height: 1.28;
+  }
+
+  .vignette {
+    box-shadow:
+      inset 0 0 80px 18px rgba(3, 0, 8, 0.55),
+      inset 0 -110px 120px rgba(3, 0, 8, 0.5);
+  }
+}
+
+@media (min-width: 768px) and (max-height: 760px) {
+  .quote-position {
+    bottom: 3.2vh;
+  }
+
+  .quote-text {
+    width: min(34vw, 430px);
+    font-size: clamp(1rem, 1.55vw, 1.25rem);
+    line-height: 1.28;
+  }
+
+  .bottom-logo {
+    bottom: 2.6vh;
+    width: 175px;
+    height: 64px;
+  }
+
+  .tour-logo {
+    width: clamp(300px, 34vw, 440px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
